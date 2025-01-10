@@ -1,5 +1,5 @@
 # .bashrc
-test
+
 # Uses fish as default shell
 if [ -n "$PS1" ] && [ -z "$FISH" ] && [ -x "/bin/fish" ]; then
     export FISH=1
@@ -11,8 +11,6 @@ fi
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
-
-PS1=$(source .prompt $PWD bash)
 
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
@@ -32,4 +30,5 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 unset rc
-test
+
+PS1=$(source .prompt $PWD bash)
