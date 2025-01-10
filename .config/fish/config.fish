@@ -6,13 +6,13 @@ function parse_git_branch
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1
     set branch (git symbolic-ref --short HEAD)
     if test -n "$branch"
-      set ahead (git rev-list --count @{u}..HEAD >/dev/null)
-      set behind (git rev-list --count HEAD..@{u} >/dev/null)
+      set ahead (git rev-list --count @{u}..HEAD)
+      set behind (git rev-list --count HEAD..@{u})
       if test -n "$ahead" -a "$ahead" -gt 0
-        set git_status "\ueb71" 
+        set -a git_status (string join '' "$git_status" \ueb71)
       end
       if test -n "$behind" -a "$behind" -gt 0
-        set git_status "\ueb6e" 
+        set -a git_status (string join '' "$git_status" \ueb6e)
       end
       echo "[$branch$git_status]"
     end

@@ -1,8 +1,10 @@
 # .bashrc
-# Use Fish by default
-if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ${BASH_EXECUTION_STRING} && -x "/bin/fish" ]]; then
-  shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
-  exec fish $LOGIN_OPTION
+
+# Uses fish as default shell
+if [ -n "$PS1" ] && [ -z "$FISH" ] && [ -x "/bin/fish" ]; then
+    export FISH=1
+    shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
+		exec fish $LOGIN_OPTION
 fi
 
 # Source global definitions
@@ -29,7 +31,22 @@ function parse_git_branch {
   fi
 }
 
-PS1='\[\e[32m\][\[\e[34m\]\u@\h \[\e[35m\]bash \[\e[33m\]\W\[\e[32m\]$(parse_git_branch)\[\e[32m\]]> \[\e[0m\]'
+function abbreviate_path {
+  local full_path=$1
+  local abbreviated_path=""
+  local IFS='/'
+  read -ra path_parts <<< "$full_path"
+  for part in "${path_parts[@]}"; do
+    if [[ $part == ${path_parts[-1]} ]]; then
+      abbreviated_path+="$part"
+    else
+      abbreviated_path+="${part:0:1}/"
+    fi
+  done
+  echo "$abbreviated_path"
+}
+
+PS1='\[\e[32m\][\[\e[34m\]\u@\h \[\e[35m\]bash \[\e[33m\]$(abbreviate_path "$PWD")\[\e[32m\]$(parse_git_branch)\[\e[32m\]]> \[\e[0m\]'
 
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
