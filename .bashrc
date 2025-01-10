@@ -37,7 +37,7 @@ function abbreviate_path {
   local IFS='/'
   read -ra path_parts <<< "$full_path"
 	if [[ $full_path == $HOME* ]]; then
-		echo "~${full_path#$HOME}"
+		echo "~"
 		return 0
 	fi
   for part in "${path_parts[@]}"; do
