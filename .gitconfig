@@ -1,0 +1,31 @@
+[user]
+	name = JianZcar
+	email = esteban.jianzcar@outlook.com
+	signingkey = 7002FB7C48DBA0BA
+[commit]
+	gpgSign = true
+[core]
+	pager = delta
+	editor = hx
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+[merge]
+  tool = meld_flatpak
+	conflictStyle = zdiff3
+[include]
+	path =/home/jian/.config/delta/themes.gitconfig
+[delta]
+	features = hoopoe
+[mergetool "meld_flatpak"]
+  cmd = flatpak run --file-forwarding org.gnome.meld \"@@\" $LOCAL \"@@\" \"@@\" $BASE \"@@\" \"@@\" $REMOTE \"@@\" --output \"@@\" $MERGED \"@@\"
+	trustExitCode = true
+[mergetool]
+  prompt = false
+  keepBackup = false
+  writeToTemp = true
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
