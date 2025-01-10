@@ -1,5 +1,5 @@
 # .bashrc
-
+test
 # Uses fish as default shell
 if [ -n "$PS1" ] && [ -z "$FISH" ] && [ -x "/bin/fish" ]; then
     export FISH=1
