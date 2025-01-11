@@ -32,3 +32,4 @@ fi
 unset rc
 
 PS1=$(source ~/.local/bin/.prompt $PWD bash)
+

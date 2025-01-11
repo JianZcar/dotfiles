@@ -14,7 +14,7 @@ function parse_git_branch {
       if [ -n "$behind" ] && [ "$behind" -gt 0 ]; then
         status+="$(printf '\ueb6e')" 
       fi
-      echo "[$1$branch$diff$status]"
+      echo "[$1$diff$branch$status]"
     fi
   fi
 }
@@ -122,4 +122,4 @@ else
     BG_BRIGHT_WHITE="\033[107m"
 fi
 
-echo -e "${BOLD}${FG_GREEN}$(whoami)@$(hostname)${RESET} ${BOLD}${FG_BLUE}$2${RESET} ${BOLD}${FG_CYAN}$(abbreviate_path "$PWD")${RESET} ${BOLD}${FG_YELLOW}$(parse_git_branch "\uf418 " " \uf440")${RESET}\uf105 "
+echo -e "${BOLD}${FG_GREEN}$(whoami)@$(hostname)${RESET} ${BOLD}${FG_BLUE}$2${RESET} ${BOLD}${FG_CYAN}$(abbreviate_path "$PWD")${RESET} ${BOLD}${FG_YELLOW}$(parse_git_branch "\uf418 " "*")${RESET}\uf105 "
