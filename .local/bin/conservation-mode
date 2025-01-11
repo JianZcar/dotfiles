@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Path to the conservation mode file
+CONSERVATION_MODE_PATH="/sys/devices/pci0000:00/0000:00:1f.0/PNP0C09:00/VPC2004:00/conservation_mode"
+
+# Check if the script is run with no arguments
+if [ $# -eq 0 ]; then
+    # Output the current value of conservation mode
+    cat "$CONSERVATION_MODE_PATH"
+else
+    # Check the argument
+    case $1 in
+        on)
+            # Change the value to 1
+            echo 1 | sudo tee "$CONSERVATION_MODE_PATH"
+            ;;
+        off)
+            # Change the value to 0
+            echo 0 | sudo tee "$CONSERVATION_MODE_PATH"
+            ;;
+        *)
+            # Invalid argument
+            echo "Usage: $0 [on|off]"
+            exit 1
+            ;;
+    esac
+fi
