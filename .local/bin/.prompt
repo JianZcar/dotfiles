@@ -47,6 +47,13 @@ function abbreviate_path {
   echo "$2$abbreviated_path"
 }
 
+function check_distrobox {
+	local distro_id=${CONTAINER_ID}
+	if [ -n "$distro_id" ]; then
+		echo "$1$distro_id"
+	fi
+}
+
 if [ "$2" == "bash" ]; then
     # For Bash, wrap color codes in \[ and \] to avoid affecting the width
     RESET="\[\033[0m\]"
@@ -122,4 +129,4 @@ else
     BG_BRIGHT_WHITE="\033[107m"
 fi
 
-echo -e "${BOLD}${FG_GREEN}$(whoami)@$(hostname)${RESET} ${BOLD}${FG_BLUE}$2${RESET} ${BOLD}${FG_CYAN}$(abbreviate_path "$PWD")${RESET} ${BOLD}${FG_YELLOW}$(parse_git_branch "\uf418 " "*")${RESET}\uf105 "
+echo -e "${BOLD}${FG_GREEN}$(whoami)@$(hostname) $(check_distrobox "\uf101 ")${RESET} ${BOLD}${FG_BLUE}$2${RESET} ${BOLD}${FG_CYAN}$(abbreviate_path "$PWD")${RESET} ${BOLD}${FG_YELLOW}$(parse_git_branch "\uf418 " "*")${RESET}\uf105 "

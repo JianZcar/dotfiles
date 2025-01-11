@@ -1,4 +1,5 @@
 # .bashrc
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Uses fish as default shell
 if [ -n "$PS1" ] && [ -z "$FISH" ] && [ -x "/bin/fish" ]; then
