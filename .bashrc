@@ -31,4 +31,4 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
-PS1=$(source ~/.prompt $PWD bash)
+PS1=$(source ~/.local/bin/.prompt $PWD bash)

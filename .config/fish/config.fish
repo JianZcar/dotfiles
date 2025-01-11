@@ -4,5 +4,5 @@ end
 
 function fish_prompt
     # Capture the output of the Bash script
-    echo -e (~/.prompt $PWD 'fish')
+    echo -e (~/.local/bin/.prompt $PWD 'fish')
 end
