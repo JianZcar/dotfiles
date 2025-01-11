@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Update dotfiles and apply them using stow
+echo "syncing .dotfiles"
+cd "/home/$(whoami)/.dotfiles" || exit
+git pull
+stow . -t "$HOME"
+
+# Update keys and apply them using stow
+echo "syncing .keys"
+cd "/home/$(whoami)/.keys" || exit
+git pull
+stow . -t "$HOME"
