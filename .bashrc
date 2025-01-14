@@ -46,4 +46,4 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-PS1=$(source ~/.local/bin/.prompt $PWD bash)
+PS1=$(source ~/.local/bin/prompt $PWD bash)
