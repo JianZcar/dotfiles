@@ -8,11 +8,6 @@ function dev_env {
 	eval "$(pyenv virtualenv-init -)"
 }
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
-fi
-
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
@@ -46,5 +41,9 @@ if [ -n "$PS1" ] && [ -z "$FISH" ] && [ -x "/bin/fish" ]; then
 		exec fish $LOGIN_OPTION
 fi
 
-PS1=$(source ~/.local/bin/.prompt $PWD bash)
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
 
+PS1=$(source ~/.local/bin/.prompt $PWD bash)
