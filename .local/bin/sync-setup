@@ -5,7 +5,7 @@ if [ -n "$distro_id" ]; then
 	exit
 fi
 
-dev_home=$(distrobox enter Dev -- bash -c 'echo $HOME')
+dev_home="/home/$(whoami)/Dev/Home"
 
 echo "syncing dotfiles"
 cd "/home/$(whoami)/.setup/dotfiles" || exit
