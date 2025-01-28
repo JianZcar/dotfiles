@@ -34,6 +34,8 @@ fi
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
+export EDITOR="hx"
+
 # Uses fish as default shell
 if [ -n "$PS1" ] && [ -z "$FISH" ] && [ -x "/bin/fish" ]; then
     export FISH=1

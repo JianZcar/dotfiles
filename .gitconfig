@@ -29,3 +29,5 @@
 	rebase = false
 [init]
 	defaultBranch = main
+[alias]
+  cleanup-branch = "!sh -c 'git remote prune origin && git branch -vv | grep \"gone]\" | awk \"{print \\$1}\" | xargs git branch -D'"
