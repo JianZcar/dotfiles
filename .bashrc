@@ -1,11 +1,16 @@
 # .bashrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-function dev_env {
+function init_pyenv {
 	export PYENV_ROOT="$HOME/.pyenv"
 	[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init - bash)"
 	eval "$(pyenv virtualenv-init -)"
+}
+
+function dev_env {
+	# init_pyenv
+	echo Dev Container - $(grep "^PRETTY_NAME" /etc/os-release | cut -d= -f2 | tr -d '"') &
 }
 
 # User specific environment
@@ -36,6 +41,11 @@ fi
 
 export EDITOR="hx"
 
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
 # Uses fish as default shell
 if [ -n "$PS1" ] && [ -z "$FISH" ] && [ -x "/bin/fish" ]; then
     export FISH=1
@@ -43,9 +53,12 @@ if [ -n "$PS1" ] && [ -z "$FISH" ] && [ -x "/bin/fish" ]; then
 		exec fish $LOGIN_OPTION
 fi
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
-fi
+function update_prompt {
+		VENV_PROMPT="${VIRTUAL_ENV:+($(basename "$VIRTUAL_ENV")) }"
+		Prompt="${VENV_PROMPT}$(~/.local/bin/prompt "bash")"
+    PS1="$Prompt"
+}
 
-PS1=$(source ~/.local/bin/prompt $PWD bash)
+PROMPT_COMMAND=update_prompt
+PS1=$Prompt
+
