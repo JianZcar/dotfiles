@@ -1,1 +1,4 @@
 .config/helix/runtime/*
+.local/share/nvim/*
+.local/share/fish/*
+.bash_history

@@ -19,9 +19,3 @@ cd "/home/$(whoami)/.setup/keys" || exit
 stow . -t "$HOME"
 stow . -t "$dev_home"
 echo "Done syncing keys"
-
-echo "syncing shell history"
-cd "/home/$(whoami)/.setup/shell-history" || exit
-stow . -t "$HOME"
-stow . -t "$dev_home"
-echo "Done syncing shell-history"
