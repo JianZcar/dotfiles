@@ -6,7 +6,7 @@
 	gpgSign = true
 [core]
 	pager = delta
-	editor = nvim
+	editor = "$EDITOR"
 [interactive]
 	diffFilter = delta --color-only
 [delta]
