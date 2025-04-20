@@ -39,7 +39,7 @@ fi
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
-export EDITOR="hx"
+export EDITOR="nvim"
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -61,4 +61,3 @@ function update_prompt {
 
 PROMPT_COMMAND=update_prompt
 PS1=$Prompt
-
