@@ -8,11 +8,6 @@ function init_pyenv {
 	eval "$(pyenv virtualenv-init -)"
 }
 
-function dev_env {
-	# init_pyenv
-	echo Dev Container - $(grep "^PRETTY_NAME" /etc/os-release | cut -d= -f2 | tr -d '"') &
-}
-
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
@@ -30,11 +25,6 @@ fi
 unset rc
 
 distro_id=${CONTAINER_ID}
-if [ -n "$distro_id" ]; then
-    if [ "$distro_id" == "Dev" ]; then
-			dev_env
-    fi
-fi
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
