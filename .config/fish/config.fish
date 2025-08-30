@@ -5,6 +5,5 @@ end
 set -g fish_greeting ""
 
 function fish_prompt
-    # Capture the output of the Bash script
-    echo -e (~/.local/bin/prompt 'fish')
 end
+starship init fish | source

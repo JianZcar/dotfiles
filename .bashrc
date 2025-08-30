@@ -46,11 +46,4 @@ if [ -n "$PS1" ] && [ -z "$FISH" ] && [ -x "/bin/fish" ]; then
 		exec fish $LOGIN_OPTION
 fi
 
-function update_prompt {
-		VENV_PROMPT="${VIRTUAL_ENV:+($(basename "$VIRTUAL_ENV")) }"
-		Prompt="${VENV_PROMPT}$(~/.local/bin/prompt "bash")"
-    PS1="$Prompt"
-}
-
-PROMPT_COMMAND=update_prompt
-PS1=$Prompt
+eval "$(starship init bash)"

@@ -1,6 +1,6 @@
-[submodule ".config/nvim"]
-	path = .config/nvim
-	url = git@github.com:JianZcar/nvchad-config.git
 [submodule ".config/helix"]
 	path = .config/helix
 	url = git@github.com:JianZcar/helix-config.git
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = git@github.com:JianZcar/nvim-setup.git
