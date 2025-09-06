@@ -14,5 +14,7 @@ echo "cache=~/.local/share/npm/" > $TMP_NPMRC
 echo "logs-dir=~/.local/share/npm/_logs/" >> $TMP_NPMRC
 echo "update-notifier=false" >> $TMP_NPMRC
 export NPM_CONFIG_USERCONFIG=$TMP_NPMRC
-
+export DOTNET_ROOT="/home/linuxbrew/.linuxbrew/opt/dotnet/libexec"
 export JAVA_TOOL_OPTIONS="-Duser.home=$HOME/.cache/java"
+
+export PATH="$DOTNET_ROOT:$PATH"
