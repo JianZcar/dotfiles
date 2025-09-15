@@ -39,7 +39,7 @@ if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
-if [ -n "$PS1"]; then
+if [ -n "$PS1" ]; then
   eval "$(starship init bash)"
   if [ -z "$NVIM" ] && which nvim >/dev/null 2>&1; then
     nvim +terminal
