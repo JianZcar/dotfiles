@@ -23,11 +23,11 @@ export PATH
 
 # User specific aliases and functions
 if [ -d ~/.bashrc.d ]; then
-    for rc in ~/.bashrc.d/*; do
-        if [ -f "$rc" ]; then
-            . "$rc"
-        fi
-    done
+  for rc in ~/.bashrc.d/*; do
+    if [ -f "$rc" ]; then
+      . "$rc"
+    fi
+  done
 fi
 unset rc
 
@@ -36,14 +36,22 @@ unset rc
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
+  . /etc/bashrc
 fi
 
-# Uses fish as default shell
-if [ -n "$PS1" ] && [ -z "$FISH" ] && [ -x "/bin/fish" ]; then
+if [ -n "$PS1"]; then
+  eval "$(starship init bash)"
+  if [ -z "$NVIM" ] && which nvim >/dev/null 2>&1; then
+    nvim +terminal
+    exit
+  fi
+  if [ -n "$FISH" ] && [ -n "$NVIM" ]; then
+      unset FISH
+  fi
+  if [ -z "$FISH" ] && [ -z "$NVIM_TERM" ] && [ -x "/bin/fish" ]; then
     export FISH=1
+    [ -n "$NVIM" ] && export NVIM_TERM=1
     shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
-		exec fish $LOGIN_OPTION
+    exec fish $LOGIN_OPTION
+  fi
 fi
-
-eval "$(starship init bash)"
